@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Final Scoreboard | Kings Of ML, Felicity Threads</title>
+		<meta charset="utf-8"/>
+		<meta name="description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives. Felicity 2015 is based upon the theme of INTO THE UNKNOWN, and we will try to showcase futuristic-space-revolutionizing-the-world. We will encourage our audience to explore the unknown and add a whole new dimension to life. ">
+		<meta name="keywords" content="felicity, felicty15, college, fest, threads, pulsation, iiit, iiith, international, institute, information, technology, hyderabad">
+		<!-- For facebook -->
+		<meta property="og:description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives. Felicity 2015 is based upon the theme of INTO THE UNKNOWN, and we will try to showcase futuristic-space-revolutionizing-the-world. We will encourage our audience to explore the unknown and add a whole new dimension to life. ">
+		<meta property="og:title" content="Felicity 2k15">
+		<meta property="og:image" content="https://felicity.iiit.ac.in/img/logo.png">
+		<!-- For twitter -->
+		<meta name="twitter:description" content="Felicity is the annual technical and cultural fest of IIIT-H. Includes technical, cultural and literary events, Major nights, talks, workshops and performances. We, at IIIT-H, believe in giving back to the society and use Felicity as a medium to serve this motive and pickup various social initiatives. Felicity 2015 is based upon the theme of INTO THE UNKNOWN, and we will try to showcase futuristic-space-revolutionizing-the-world. We will encourage our audience to explore the unknown and add a whole new dimension to life. ">
+		<meta name="twitter:title" content="Felicity 2k15">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/base.css"/>
+		<link rel="stylesheet" href="../../../css/portals.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet" type="text/css">
+		<script src="../../../js/vendor/jquery-1.10.2.min.js"></script>
+		<script>window.jQuery || document.write('<script src="../../15/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+</head>
+<body>
+    <div class="wrapper">
+            <div class="navbar">
+        <a href="../../home.html" class="logo-text navbar-title">felicity<sup>15</sup></a>
+        <ul>
+                            <li><a href="../../index.html">&lt; Threads</a></li>
+                    </ul>
+    </div>
+        <div class="container">
+            <h1>
+                Kings Of ML | Final Scoreboard
+            </h1>
+            <p class="page-sub-title">
+                Do not regret, just regress            </p>
+						<h4 class="text-center">The Contest has Ended.</h4>
+						<div class="sub-navbar" id="score-nav"></div>
+						<div class="container" id="problems-list">
+								<div class="board-container">
+										<div class="box scoreboard score-wrapper">
+												<table border="0">
+														<thead>
+																<tr>
+																		<th>Rank</th>
+																		<th>Nick</th>
+																		<th>Score</th>
+																		<th>Country</th>
+																</tr>
+														</thead>
+														<tbody>
+														</tbody>
+												</table>
+										</div>
+								</div>
+						</div>
+				</div>
+    </div>
+    <div class="footer">
+        <p>&copy; Felicity 2014-2015</p>
+    </div>
+		<script type="text/javascript">
+var jsons = [{"url":"kings_of_ml1.json","title":"Kings Of Language"},{"url":"kings_of_ml2.json","title":"CAPTCHAcracker - Easy"},{"url":"kings_of_ml3.json","title":"CAPTCHAcracker - Hard"}];
+$(function(){
+		if (jsons.length > 1) {
+				var $ul = $('<ul>').appendTo('#score-nav');
+				$.each(jsons, function(i, obj){
+						$ul.append(
+								$('<li>').append(
+										$('<div>')
+										.addClass('navitem')
+										.data('index', i)
+										.text(obj.title)
+										.click(showScoreboard)
+								)
+						)
+				});
+				$ul.children('li').first().children().addClass('active');
+		}
+		getScoreboard(jsons[0]);
+});
+
+function showScoreboard() {
+		$('.navitem.active').removeClass('active');
+		var i = $(this).addClass('active').data('index');
+		var obj = jsons[i];
+		getScoreboard(obj);
+}
+function getScoreboard(obj) {
+		if (obj.data === undefined) {
+				$.get("./" + obj.url, function(result){
+						obj.data = result;
+						display(obj.data);
+				})
+		}
+		else {
+				display(obj.data);
+		}
+}
+
+function display(data) {
+		var $tbody = $('tbody').empty();
+		$.each(data, function(i, row){
+				$('<tr>')
+				.append( $('<td>').text(i+1) )   //Rank
+				.append( $('<td>').text(row[0]) ) //Name
+				.append( $('<td>').text(row[1]) ) //score
+				.append( $('<td>').html( $('<img>').attr('src', '../../../img/countries/'+row[2] +'.png' )  ) ) //Country
+				.appendTo( $tbody );
+		});
+}
+				</script>
+    
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../../js/analytics.js','ga');
+
+  ga('create', 'UA-57607777-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
